@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Calculations = () => {
+const History = () => {
   return (
     <div className="calcs">Calculations</div>
   )
 }
 
-export default Calculations;
+export default History;
