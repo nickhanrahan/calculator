@@ -1,0 +1,19 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "Basic calculator React app which supports addition, subtraction, multiplication, and division functions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickhanrahan/calculator.git"
+  },
+  "author": "nh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nickhanrahan/calculator/issues"
+  },
+  "homepage": "https://github.com/nickhanrahan/calculator#readme"
+}
