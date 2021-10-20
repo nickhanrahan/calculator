@@ -1,12 +1,37 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.expression {
+  display: flex;
+}
+
+.left-block {
+  min-width: 200px;
+  width: 20%;
+}
+
+.exp-text {
+  font-size: 24px;
+}
+
 .keyrow {
   display: flex;
   justify-content: center;
 }
 
 .keyrow button {
-  width: 40px;
+  font-family: 'IBM Plex Mono', monospace;
+  width: 60px;
+  height: 80px;
   padding: 10px;
-  font-size: 20px;
+  font-size: 32px;
 }
 
 .keycol-1-5 {
