@@ -17,12 +17,23 @@ const Calculator = () => {
     setCurIndex(newCurIndex);
   }
 
+  const handleExpChange = (event) => {
+    setExpression(event.target.value);
+    let newCurIndex = curIndex;
+    if (event.nativeEvent.inputType === "deleteContentBackward") {
+      newCurIndex--;
+    } else {
+      newCurIndex++;
+    }
+    setCurIndex(newCurIndex)
+  }
+
   return (
     <div className="calculator">
       <History />
       <div className="expression" >
         <div className="left-block"></div>
-        <div className="exp-text">{expression}</div>
+        <input className="exp-text" value={expression} onChange={handleExpChange}/>
       </div>
       <Keypad handleButtonPress={handleButtonPress}/>
     </div>
