@@ -10,14 +10,14 @@ const Calculator = () => {
   const [opsList, setOpsList] = useState([]);
   const [parens, setParens] = useState([]);
 
-  const handleButtonPress = (event) => {
+  const handleKeyPadInput = (event) => {
     const newExpression = expression + event.target.value;
     const newCurIndex = curIndex + 1;
     setExpression(newExpression);
     setCurIndex(newCurIndex);
   }
 
-  const handleExpChange = (event) => {
+  const handleInputChange = (event) => {
     setExpression(event.target.value);
     let newCurIndex = curIndex;
     if (event.nativeEvent.inputType === "deleteContentBackward") {
@@ -28,14 +28,18 @@ const Calculator = () => {
     setCurIndex(newCurIndex)
   }
 
+  const solve = (string) => {
+    console.log(string);
+  }
+
   return (
     <div className="calculator">
       <History />
       <div className="expression" >
         <div className="left-block"></div>
-        <input className="exp-text" value={expression} onChange={handleExpChange}/>
+        <input className="exp-text" value={expression} onChange={handleInputChange}/>
       </div>
-      <Keypad handleButtonPress={handleButtonPress}/>
+      <Keypad handleKeyPadInput={handleKeyPadInput}/>
     </div>
   )
 }
