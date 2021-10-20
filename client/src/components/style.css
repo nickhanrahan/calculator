@@ -1,0 +1,26 @@
+.keyrow {
+  display: flex;
+  justify-content: center;
+}
+
+.keyrow button {
+  width: 40px;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.keycol-1-5 {
+  margin: 5px;
+}
+.keycol-2-5 {
+  margin: 5px;
+}
+.keycol-3-5 {
+  margin: 5px;
+}
+.keycol-4-5 {
+  margin: 5px;
+}
+.keycol-5-5 {
+  margin: 5px;
+}

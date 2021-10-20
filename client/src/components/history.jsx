@@ -2,7 +2,7 @@ import React from 'react';
 
 const History = () => {
   return (
-    <div className="calcs">Calculations</div>
+    <div className="calcs">History</div>
   )
 }
 
