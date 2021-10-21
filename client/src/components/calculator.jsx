@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import Calculations from './calculations.jsx';
+import History from './history.jsx';
 import Keypad from './keypad.jsx';
 
 const Calculator = () => {
   const [expression, setExpression] = useState('');
-  const [history, setHistory] = useState([]);
+  const [calculations, setCalculations] = useState([]);
 
   const handleKeyPadInput = (event) => {
     const newExpression = expression + event.target.value;
@@ -71,7 +71,7 @@ const Calculator = () => {
 
   return (
     <div className="calculator">
-      <Calculations />
+      <History calculations={calculations} />
       <div className="expression" >
         <div className="left-block"></div>
         <input className="exp-text" value={expression} onChange={handleInputChange}/>
