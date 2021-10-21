@@ -85,7 +85,7 @@ const Calculator = () => {
 
   return (
     <div className="calculator">
-      <History calculations={calculations} />
+      <History calculations={calculations} setExpression={setExpression} />
       <div className="expression" >
         <form onSubmit={execute}>
           <input className="exp-text" value={expression} onChange={handleInputChange}/>
