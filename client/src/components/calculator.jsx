@@ -20,6 +20,7 @@ const Calculator = () => {
     '/': function(a, b) { return (a / b).toString() },
     '+': function(a, b) { return (a + b).toString() },
     '-': function(a, b) { return (a - b).toString() },
+    '^': function(a, b) { return (a ** b).toString() }
   }
 
   const solveString = (str) => {
@@ -50,10 +51,15 @@ const Calculator = () => {
     if (open && close) {
       arr.splice(open, close - open + 1, solveArray(arr.slice(open + 1, close)));
     }
-    //MULTIPLY&DIVIDE
-    arr = dualOp(arr, '*', '/');
-    //ADD&SUBTRACT
-    arr = dualOp(arr, '+', '-');
+    //EXPONENT
+    for (let n = arr.length - 1; n >= 0; n--) {
+      if (arr[n] === '^') {
+        arr.splice(n - 1, 3, operators['^'](parseFloat(arr[n - 1]), parseFloat(arr[n + 1])));
+        n++;
+      }
+    }
+    //MDAS
+    arr = dualOp(dualOp(arr, '*', '/'), '+', '-');
 
     return arr.length === 1 ? arr[0] : false;
   }
