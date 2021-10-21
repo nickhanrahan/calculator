@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import History from './history.jsx';
 import Keypad from './keypad.jsx';
 
-const operators = {}
-
 const Calculator = () => {
   const [expression, setExpression] = useState('');
   const [expressionArray, setExpressionArray] = useState([]);
@@ -28,40 +26,42 @@ const Calculator = () => {
     setCurIndex(newCurIndex)
   }
 
+  const operators = {
+    '*': function(a, b) { return (a * b).toString() },
+    '/': function(a, b) { return (a / b).toString() },
+    '+': function(a, b) { return (a + b).toString() },
+    '-': function(a, b) { return (a - b).toString() },
+  }
+
   const solve = (arr) => {
-    //populate a lists for each operator, first open paren, last close paren
+    //PARENTHESES
     let open;
     let close;
     for (let i = 0; i < arr.length; i++) {
       if (arr[i] === '(' && !open) open = i;
       if (arr[i] === ')') close = i;
     }
-    //begin operations in PEMDAS order
-    //Parens: call solve recursively on the string created between parens first. splice result into array
     if (open && close) {
       arr.splice(open, close - open + 1, solve(arr.slice(open + 1, close)));
     }
     //MULTIPLY&DIVIDE
-    for (let x = 0; x < arr.length; x++) {
-      if (arr[x] === '*' || arr[x] === '/') {
-        if (arr[x] === '*') arr.splice(x - 1, 3, (parseFloat(arr[x - 1]) * parseFloat(arr[x + 1])).toString());
-        if (arr[x] === '/') arr.splice(x - 1, 3, (parseFloat(arr[x - 1]) / parseFloat(arr[x + 1])).toString());
-        x--;
-      }
-    }
+    arr = dualOp(arr, '*', '/');
     //ADD&SUBTRACT
+    arr = dualOp(arr, '+', '-');
+
+    return arr.length === 1 ? arr[0] : false;
+  }
+
+  const dualOp = (arr, opOne, opTwo) => {
     for (let j = 0; j < arr.length; j++) {
-      if (arr[j] === '+' || arr[j] === '-') {
-        if (arr[j] === '+') arr.splice(j - 1, 3, (parseFloat(arr[j - 1]) + parseFloat(arr[j + 1])).toString());
-        if (arr[j] === '-') arr.splice(j - 1, 3, (parseFloat(arr[j - 1]) - parseFloat(arr[j + 1])).toString());
+      if (arr[j] === opOne || arr[j] === opTwo) {
+        if (arr[j] === opOne) arr.splice(j - 1, 3, operators[opOne](parseFloat(arr[j - 1]), parseFloat(arr[j + 1])))
+        if (arr[j] === opTwo) arr.splice(j - 1, 3, operators[opTwo](parseFloat(arr[j - 1]), parseFloat(arr[j + 1])))
         j--;
       }
     }
-
-    return arr.length === 1 ? arr[0] : false;
-
+    return arr;
   }
-
 
   return (
     <div className="calculator">
