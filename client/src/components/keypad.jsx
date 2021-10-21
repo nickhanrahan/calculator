@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css';
 
-const Keypad = ({ handleKeyPadInput }) => {
+const Keypad = ({ handleKeyPadInput, execute }) => {
 
   return (
     <div className="keypad">
@@ -30,7 +30,7 @@ const Keypad = ({ handleKeyPadInput }) => {
         <div className="keycol-1-5"><button value="" className="idk-btn" ></button></div>
         <div className="keycol-2-5"><button value="0" className="zero-btn" onClick={handleKeyPadInput}>0</button></div>
         <div className="keycol-3-5"><button value="." className="point-btn" onClick={handleKeyPadInput}>.</button></div>
-        <div className="keycol-4-5"><button value="=" className="equal-btn" >=</button></div>
+        <div className="keycol-4-5"><button value="=" className="equal-btn" onClick={execute}>=</button></div>
         <div className="keycol-5-5"><button value="+" className="plus-btn" onClick={handleKeyPadInput}>+</button></div>
       </div>
     </div>

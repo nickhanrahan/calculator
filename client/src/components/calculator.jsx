@@ -69,6 +69,18 @@ const Calculator = () => {
     return arr;
   }
 
+  const execute = (event) => {
+    if (!expression) return;
+    let newCalculations = [...calculations]
+    let calculation = {
+      expression: expression,
+      solution: solveString(expression) || 'Error',
+    }
+    newCalculations.push(calculation);
+    setCalculations(newCalculations);
+    setExpression('');
+  }
+
   return (
     <div className="calculator">
       <History calculations={calculations} />
@@ -76,7 +88,7 @@ const Calculator = () => {
         <div className="left-block"></div>
         <input className="exp-text" value={expression} onChange={handleInputChange}/>
       </div>
-      <Keypad handleKeyPadInput={handleKeyPadInput}/>
+      <Keypad handleKeyPadInput={handleKeyPadInput} execute={execute} />
     </div>
   )
 }
