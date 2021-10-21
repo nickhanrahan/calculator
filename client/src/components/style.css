@@ -17,7 +17,8 @@ body {
   width: 20%;
 }
 
-.exp-text {
+input.exp-text {
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 24px;
 }
 
