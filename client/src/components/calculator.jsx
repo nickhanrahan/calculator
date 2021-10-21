@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import History from './history.jsx';
+import Calculations from './calculations.jsx';
 import Keypad from './keypad.jsx';
 
 const Calculator = () => {
@@ -12,6 +12,13 @@ const Calculator = () => {
 
   const handleInputChange = (event) => {
     setExpression(event.target.value);
+  }
+
+  const operators = {
+    '*': function(a, b) { return (a * b).toString() },
+    '/': function(a, b) { return (a / b).toString() },
+    '+': function(a, b) { return (a + b).toString() },
+    '-': function(a, b) { return (a - b).toString() },
   }
 
   const solveString = (str) => {
@@ -28,14 +35,7 @@ const Calculator = () => {
       }
     }
     if (curElement) expressionArray.push(curElement);
-    return expressionArray;
-  }
-
-  const operators = {
-    '*': function(a, b) { return (a * b).toString() },
-    '/': function(a, b) { return (a / b).toString() },
-    '+': function(a, b) { return (a + b).toString() },
-    '-': function(a, b) { return (a - b).toString() },
+    return solveArray(expressionArray);
   }
 
   const solveArray = (arr) => {
@@ -70,7 +70,7 @@ const Calculator = () => {
 
   return (
     <div className="calculator">
-      <History />
+      <Calculations />
       <div className="expression" >
         <div className="left-block"></div>
         <input className="exp-text" value={expression} onChange={handleInputChange}/>
