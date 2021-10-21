@@ -8,6 +8,17 @@ body {
   font-family: 'IBM Plex Mono', monospace;
 }
 
+.calcs {
+  display: flex;
+  justify-content: center;
+}
+
+.calcs-box {
+  width: 500px;
+  height: 250px;
+  border: 3px solid black;
+}
+
 .expression {
   display: flex;
 }
