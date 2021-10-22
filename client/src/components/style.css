@@ -40,9 +40,13 @@ input.exp-text {
   font-size: 24px;
 }
 
-.keyrow {
+.keypad {
   display: flex;
   justify-content: center;
+}
+
+.keyrow {
+  display: flex;
 }
 
 .keyrow button {
@@ -53,18 +57,33 @@ input.exp-text {
   font-size: 32px;
 }
 
-.keycol-1-5 {
+.keycol-1-6 {
+  width: 60px;
+  height: 80px;
   margin: 5px;
 }
-.keycol-2-5 {
+.keycol-2-6 {
+  width: 60px;
+  height: 80px;
   margin: 5px;
 }
-.keycol-3-5 {
+.keycol-3-6 {
+  width: 60px;
+  height: 80px;
   margin: 5px;
 }
-.keycol-4-5 {
+.keycol-4-6 {
+  width: 60px;
+  height: 80px;
   margin: 5px;
 }
-.keycol-5-5 {
+.keycol-5-6 {
+  width: 60px;
+  height: 80px;
+  margin: 5px;
+}
+.keycol-6-6 {
+  width: 60px;
+  height: 80px;
   margin: 5px;
 }
