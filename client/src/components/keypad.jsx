@@ -20,6 +20,7 @@ const Keypad = ({ handleKeyPadInput, execute, setExpression }) => {
           <div className="keycol-3-6"><button value="5" className="five-btn" onClick={handleKeyPadInput}>5</button></div>
           <div className="keycol-4-6"><button value="6" className="six-btn" onClick={handleKeyPadInput}>6</button></div>
           <div className="keycol-5-6"><button value="*" className="times-btn" onClick={handleKeyPadInput}>&times;</button></div>
+          <div className="keycol-6-6"><button value="&#8730;" className="sqrt-btn" onClick={handleKeyPadInput}>&#8730;</button></div>
         </div>
         <div className="keyrow">
           <div className="keycol-1-6"><button value="C" className="clear-btn" onClick={(e) => setExpression('')}>C</button></div>
