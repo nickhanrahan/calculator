@@ -46,10 +46,10 @@ const Calculator = () => {
     let open;
     let close;
     for (let i = 0; i < arr.length; i++) {
-      if (arr[i] === '(' && !open) open = i;
+      if (arr[i] === '(' && open === undefined) open = i;
       if (arr[i] === ')') close = i;
     }
-    if (open !== null && close) {
+    if (open !== undefined && close) {
       arr.splice(open, close - open + 1, solveArray(arr.slice(open + 1, close)));
     }
     //EXPONENT/SQRT
@@ -69,6 +69,7 @@ const Calculator = () => {
   const dualOp = (arr, opOne, opTwo) => {
     for (let j = 0; j < arr.length; j++) {
       if (arr[j] === opOne || arr[j] === opTwo) {
+        if (arr[j - 1] === undefined || arr[j + 1] === undefined) return arr;
         if (arr[j] === opOne) arr.splice(j - 1, 3, operators[opOne](arr[j - 1], arr[j + 1]));
         if (arr[j] === opTwo) arr.splice(j - 1, 3, operators[opTwo](arr[j - 1], arr[j + 1]));
         j--;
