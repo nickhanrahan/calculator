@@ -63,7 +63,7 @@ const Calculator = () => {
     //MDAS
     arr = dualOp(dualOp(arr, '*', '/'), '+', '-');
 
-    return (arr.length === 1 && arr[0]) ? arr[0].toString() : 'Error';
+    return (arr.length === 1 && arr[0] !== undefined) ? arr[0].toString() : 'Error';
   }
 
   const dualOp = (arr, opOne, opTwo) => {
