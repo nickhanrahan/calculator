@@ -49,7 +49,7 @@ const Calculator = () => {
       if (arr[i] === '(' && !open) open = i;
       if (arr[i] === ')') close = i;
     }
-    if (open && close) {
+    if (open !== null && close) {
       arr.splice(open, close - open + 1, solveArray(arr.slice(open + 1, close)));
     }
     //EXPONENT/SQRT
@@ -63,7 +63,7 @@ const Calculator = () => {
     //MDAS
     arr = dualOp(dualOp(arr, '*', '/'), '+', '-');
 
-    return arr.length === 1 ? arr[0] : false;
+    return arr.length === 1 ? arr[0] : 'Error';
   }
 
   const dualOp = (arr, opOne, opTwo) => {
