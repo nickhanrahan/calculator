@@ -16,12 +16,12 @@ const Calculator = () => {
   }
 
   const operators = {
-    '*': function(a, b) { return (a * b).toString() },
-    '/': function(a, b) { return (a / b).toString() },
-    '+': function(a, b) { return (a + b).toString() },
-    '-': function(a, b) { return (a - b).toString() },
-    '^': function(a, b) { return (a ** b).toString() },
-    '√': function(a) { return (Math.sqrt(a)).toString() },
+    '*': function(a, b) { return (a * b) },
+    '/': function(a, b) { return (a / b) },
+    '+': function(a, b) { return (a + b) },
+    '-': function(a, b) { return (a - b) },
+    '^': function(a, b) { return (a ** b) },
+    '√': function(a) { return (Math.sqrt(a)) },
   }
 
   const solveString = (str) => {
@@ -30,14 +30,14 @@ const Calculator = () => {
     for (let x = 0; x < str.length; x++) {
       if (str[x] === ' ') continue;
       if (operators[str[x]] || str[x] === '(' || str[x] === ')') {
-        if (curElement) expressionArray.push(curElement);
+        if (curElement) expressionArray.push(parseFloat(curElement));
         expressionArray.push(str[x]);
         curElement = '';
       } else {
         curElement += str[x];
       }
     }
-    if (curElement) expressionArray.push(curElement);
+    if (curElement) expressionArray.push(parseFloat(curElement));
     return solveArray(expressionArray);
   }
 
@@ -55,22 +55,22 @@ const Calculator = () => {
     //EXPONENT/SQRT
     for (let n = arr.length - 1; n >= 0; n--) {
       if (arr[n] === '^' || arr[n] === '√') {
-        if (arr[n] === '^') arr.splice(n - 1, 3, operators['^'](parseFloat(arr[n - 1]), parseFloat(arr[n + 1])));
-        if (arr[n] === '√') arr.splice(n, 2, operators['√'](parseFloat(arr[n + 1])));
+        if (arr[n] === '^') arr.splice(n - 1, 3, operators['^'](arr[n - 1], arr[n + 1]));
+        if (arr[n] === '√') arr.splice(n, 2, operators['√'](arr[n + 1]));
         n++;
       }
     }
     //MDAS
     arr = dualOp(dualOp(arr, '*', '/'), '+', '-');
 
-    return arr.length === 1 ? arr[0] : 'Error';
+    return arr.length === 1 ? arr[0].toString() : 'Error';
   }
 
   const dualOp = (arr, opOne, opTwo) => {
     for (let j = 0; j < arr.length; j++) {
       if (arr[j] === opOne || arr[j] === opTwo) {
-        if (arr[j] === opOne) arr.splice(j - 1, 3, operators[opOne](parseFloat(arr[j - 1]), parseFloat(arr[j + 1])));
-        if (arr[j] === opTwo) arr.splice(j - 1, 3, operators[opTwo](parseFloat(arr[j - 1]), parseFloat(arr[j + 1])));
+        if (arr[j] === opOne) arr.splice(j - 1, 3, operators[opOne](arr[j - 1], arr[j + 1]));
+        if (arr[j] === opTwo) arr.splice(j - 1, 3, operators[opTwo](arr[j - 1], arr[j + 1]));
         j--;
       }
     }
