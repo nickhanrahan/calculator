@@ -47,14 +47,14 @@ const Calculator = () => {
 
   const solveArray = (arr) => {
     //PARENTHESES
-    let open;
-    let close;
+    let opens = [];
     for (let i = 0; i < arr.length; i++) {
-      if (arr[i] === '(' && open === undefined) open = i;
-      if (arr[i] === ')') close = i;
-    }
-    if (open !== undefined && close) {
-      arr.splice(open, close - open + 1, solveArray(arr.slice(open + 1, close)));
+      if (arr[i] === '(') opens.push(i);
+      if (arr[i] === ')' && opens[opens.length - 1] !== undefined) {
+        let resolve = opens.pop();
+        arr.splice(resolve, i - resolve + 1, solveArray(arr.slice(resolve + 1, i)));
+        i = resolve;
+      }
     }
     //FACTORIAL
     for(let k = 0; k < arr.length; k++) {
@@ -75,9 +75,10 @@ const Calculator = () => {
     arr = dualOp(dualOp(arr, '*', '/'), '+', '-');
 
     if (arr[0] === undefined || isNaN(arr[0]) || arr.length !== 1) {
-      return 'Error';
+      console.log('1')
+      return 'Err';
     }
-    return arr[0].toString();
+    return arr[0] === 0 ? '0': arr[0];
   }
 
   const dualOp = (arr, opOne, opTwo) => {
