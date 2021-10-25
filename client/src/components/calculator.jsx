@@ -74,13 +74,16 @@ const Calculator = () => {
     //MDAS
     arr = dualOp(dualOp(arr, '*', '/'), '+', '-');
 
-    return (arr.length === 1 && arr[0] !== undefined) ? arr[0] : 'Error';
+    if (arr[0] === undefined || isNaN(arr[0]) || arr.length !== 1) {
+      return 'Error';
+    }
+    return arr[0].toString();
   }
 
   const dualOp = (arr, opOne, opTwo) => {
     for (let j = 0; j < arr.length; j++) {
       if (arr[j] === opOne || arr[j] === opTwo) {
-        if (arr[j - 1] === undefined || arr[j + 1] === undefined) return arr;
+        if (arr[j - 1] === undefined || arr[j + 1] === undefined) return [];
         if (arr[j] === opOne) arr.splice(j - 1, 3, operators[opOne](arr[j - 1], arr[j + 1]));
         if (arr[j] === opTwo) arr.splice(j - 1, 3, operators[opTwo](arr[j - 1], arr[j + 1]));
         j--;
