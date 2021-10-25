@@ -30,6 +30,16 @@ body {
   text-align: right;
 }
 
+.calc-expression:hover {
+  background-color: #ececec;
+  cursor: pointer;
+}
+
+.calc-solution:hover {
+  background-color: #ececec;
+  cursor: pointer;
+}
+
 .expression {
   display: flex;
   justify-content: center;
