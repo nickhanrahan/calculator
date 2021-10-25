@@ -1,7 +1,7 @@
 {
   "name": "calculator",
   "version": "1.0.0",
-  "description": "Basic calculator React app which supports addition, subtraction, multiplication, and division functions.",
+  "description": "Basic calculator React app that can solve math expressions with multiple operations.",
   "main": "server/index.js",
   "scripts": {
     "start": "npm run server & npm run build-dev",
