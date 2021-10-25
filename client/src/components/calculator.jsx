@@ -51,15 +51,15 @@ const Calculator = () => {
     for (let i = 0; i < arr.length; i++) {
       if (arr[i] === '(') opens.push(i);
       if (arr[i] === ')' && opens[opens.length - 1] !== undefined) {
-        let resolve = opens.pop();
-        arr.splice(resolve, i - resolve + 1, solveArray(arr.slice(resolve + 1, i)));
-        i = resolve;
+        let open = opens.pop();
+        arr.splice(open, i - open + 1, solveArray(arr.slice(open + 1, i)));
+        i = open;
       }
     }
     //FACTORIAL
     for(let k = 0; k < arr.length; k++) {
       if (arr[k] === '!') {
-        if (arr[k - 1] === undefined) return [];
+        if (arr[k - 1] === undefined) return 'Error';
         arr.splice(k - 1, 2, operators['!'](arr[k - 1]));
       }
     }
@@ -76,7 +76,7 @@ const Calculator = () => {
 
     if (arr[0] === undefined || isNaN(arr[0]) || arr.length !== 1) {
       console.log('1')
-      return 'Err';
+      return 'Error';
     }
     return arr[0] === 0 ? '0': arr[0];
   }

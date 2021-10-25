@@ -12,7 +12,7 @@ const History = ({ calculations, setExpression, expression }) => {
       <div id="hist" className="history-box">
         {calculations.map((calculation, i) => (
           <div key={`calc${i}`} className="calc">
-            <div className="calc-expression" onClick={() => setExpression(expression + calculation.expression)}>{calculation.expression}</div>
+            <div className="calc-expression" onClick={() => setExpression(calculation.expression)}>{calculation.expression}</div>
             <div className="calc-solution" onClick={() => setExpression(expression + calculation.solution)}>{calculation.solution}</div>
           </div>
         ))}
