@@ -1,5 +1,6 @@
  # Calculator
- Basic calculator that can solve math expressions with multiple operators (*, &divide;, +, -, ^, !, &#8730;).
+ Basic calculator that can solve math expressions with multiple operations (*, &divide;, +, -, ^, !, &#8730;).
+
 ---
 
  ### Installation

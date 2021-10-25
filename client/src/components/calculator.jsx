@@ -75,7 +75,6 @@ const Calculator = () => {
     arr = dualOp(dualOp(arr, '*', '/'), '+', '-');
 
     if (arr[0] === undefined || isNaN(arr[0]) || arr.length !== 1) {
-      console.log('1')
       return 'Error';
     }
     return arr[0] === 0 ? '0': arr[0];
