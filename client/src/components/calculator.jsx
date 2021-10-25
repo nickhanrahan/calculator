@@ -22,6 +22,10 @@ const Calculator = () => {
     '-': function(a, b) { return (a - b) },
     '^': function(a, b) { return (a ** b) },
     '√': function(a) { return (Math.sqrt(a)) },
+    '!': function(a) {
+      if (a <= 1) { return 1 }
+      else { return a * operators['!'](a - 1)}
+    }
   }
 
   const solveString = (str) => {
@@ -51,6 +55,13 @@ const Calculator = () => {
     }
     if (open !== undefined && close) {
       arr.splice(open, close - open + 1, solveArray(arr.slice(open + 1, close)));
+    }
+    //FACTORIAL
+    for(let k = 0; k < arr.length; k++) {
+      if (arr[k] === '!') {
+        if (arr[k - 1] === undefined) return [];
+        arr.splice(k - 1, 2, operators['!'](arr[k - 1]));
+      }
     }
     //EXPONENT/SQRT
     for (let n = arr.length - 1; n >= 0; n--) {
@@ -94,7 +105,7 @@ const Calculator = () => {
 
   return (
     <div className="calculator">
-      <History calculations={calculations} setExpression={setExpression} />
+      <History calculations={calculations} setExpression={setExpression} expression={expression} />
       <div className="expression" >
         <form className="exp-form" onSubmit={execute}>
           <input className="exp-text" value={expression} onChange={handleInputChange}/>

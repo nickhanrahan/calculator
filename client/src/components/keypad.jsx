@@ -37,6 +37,7 @@ const Keypad = ({ handleKeyPadInput, execute, setExpression, expression }) => {
           <div className="keycol-3-6"><button value="." className="point-btn" onClick={handleKeyPadInput}>.</button></div>
           <div className="keycol-4-6"><button value="=" className="equal-btn" onClick={execute}>=</button></div>
           <div className="keycol-5-6"><button value="+" className="plus-btn" onClick={handleKeyPadInput}>+</button></div>
+          <div className="keycol-6-6"><button value="!" className="factrl-btn" onClick={handleKeyPadInput}>!</button></div>
         </div>
       </div>
       <div className="delete-ctr">
