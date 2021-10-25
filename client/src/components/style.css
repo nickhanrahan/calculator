@@ -33,11 +33,20 @@ body {
 .expression {
   display: flex;
   justify-content: center;
+  padding: 15px;
 }
 
 input.exp-text {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 24px;
+  border: 0px;
+  background-color: #dddddd;
+  padding: 5px;
+  width: 410px;
+}
+
+input.exp-text:focus {
+  outline: none;
 }
 
 .keypad {
@@ -55,6 +64,14 @@ input.exp-text {
   height: 80px;
   padding: 10px;
   font-size: 32px;
+  border: 1px solid #000000;
+  border-radius: 0px;
+  background-color: #ececec;
+}
+
+.keyrow button:hover {
+  cursor: pointer;
+  background-color: #dddddd;
 }
 
 .keycol-1-6 {
