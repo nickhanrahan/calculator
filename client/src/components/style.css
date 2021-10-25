@@ -68,7 +68,7 @@ input.exp-text:focus {
   display: flex;
 }
 
-.keyrow button {
+.keypad button {
   font-family: 'IBM Plex Mono', monospace;
   width: 60px;
   height: 80px;
@@ -79,9 +79,19 @@ input.exp-text:focus {
   background-color: #ececec;
 }
 
-.keyrow button:hover {
+.keypad button:hover {
   cursor: pointer;
   background-color: #dddddd;
+}
+
+button.delete-btn {
+  width: 120px;
+  font-size: 100px;
+}
+
+span.delete-span {
+  transform: translate(0px, -45px);
+  display: block;
 }
 
 .keycol-1-6 {

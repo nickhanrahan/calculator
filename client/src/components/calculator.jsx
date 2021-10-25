@@ -100,7 +100,11 @@ const Calculator = () => {
           <input className="exp-text" value={expression} onChange={handleInputChange}/>
         </form>
       </div>
-      <Keypad handleKeyPadInput={handleKeyPadInput} execute={execute} setExpression={setExpression} />
+      <Keypad
+        handleKeyPadInput={handleKeyPadInput}
+        execute={execute}
+        setExpression={setExpression}
+        expression={expression} />
     </div>
   )
 }
