@@ -109,6 +109,7 @@ const Calculator = () => {
 
   return (
     <div className="calculator">
+      <h1 className="calc-title">Calculator</h1>
       <History calculations={calculations} setExpression={setExpression} expression={expression} />
       <div className="expression" >
         <form className="exp-form" onSubmit={execute}>

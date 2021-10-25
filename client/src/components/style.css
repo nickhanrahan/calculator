@@ -8,9 +8,15 @@ body {
   font-family: 'IBM Plex Mono', monospace;
 }
 
+.calc-title {
+  text-align: center;
+  margin: 10px;
+}
+
 .history {
   display: flex;
   justify-content: center;
+  margin: 5px;
 }
 
 .history-box {
